@@ -1,14 +1,23 @@
 const add = document.querySelector(".add");
-let textindex = 0;
+const updatels=()=>{
+    const allnotes=document.querySelectorAll("textarea");
+    const notes=[];
+    allnotes.forEach((currentElement)=>{
+        return notes.push(currentElement.value);
+    })
 
-const addnotefield = (text = "", key = `noteval_${textindex++}`) => {//default hat is for add button
+    const saved=localStorage.setItem('notes',JSON.stringify(notes));//takes key value pair but second is always string so convert array to string
+    // console.log(notes);
+    
+}
+const addnotefield = (text = "") => {//default hat is for add button
     const main = document.querySelector("main");
     const div = document.createElement("div");
     div.classList.add("notecontaineer");
 
     const htmlData = `
         <div class="operation">
-            <button class="edit"><i class="fas fa-edit"></i></button>
+            <button class="edit"><i class="far fa-edit"></i></button>
             <button class="delete"><i class="fas fa-trash"></i></button>
         </div>
         <div class="savednote ${text ? "" : "hidden"}">${text ? text : ""}</div>
@@ -27,37 +36,42 @@ const addnotefield = (text = "", key = `noteval_${textindex++}`) => {//default h
     edit.addEventListener('click', () => {
         textfield.classList.toggle("hidden");
         savednote.classList.toggle("hidden");
-
-        // Save the updated value of textarea to localStorage
-        const currentText = textfield.value;
-        localStorage.setItem(key, currentText); // Save the current text
-        savednote.innerHTML = currentText; // Update savednote content
+       
     });
 
     // Delete button logic
     deletebutton.addEventListener('click', () => {
         div.remove(); // Remove the note from the DOM
-        localStorage.removeItem(key); // Remove from localStorage
+        updatels();//update again after deleting...
     });
 
     // Textarea change event to update the local storage
-    textfield.addEventListener('input', (event) => {
+    textfield.addEventListener('change', (event) => {
         text = event.target.value;
+        savednote.innerHTML = text;
+         //to save
+         updatels();
     });
 
     // Append the note as the last child of the container
     main.appendChild(div);
 };
 
-// On page load, load saved notes from localStorage
-document.addEventListener('DOMContentLoaded', () => {
-    Object.keys(localStorage).forEach(key => {
-        if (key.startsWith('noteval_')) {
-            const text = localStorage.getItem(key);
-            addnotefield(text, key); // Add note with the saved text and pass the key
-        }
-    });
-});
+// // On page load, load saved notes from localStorage
+// document.addEventListener('DOMContentLoaded', () => {
+//     Object.keys(localStorage).forEach(key => {
+//         if (key.startsWith('noteval_')) {
+//             const text = localStorage.getItem(key);
+//             addnotefield(text, key); // Add note with the saved text and pass the key
+//         }
+//     });
+// });
+//get data
+const fetchedNotes=JSON.parse(localStorage.getItem('notes'));
+console.log(fetchedNotes);
+if (fetchedNotes) {
+    fetchedNotes.forEach((individualnote)=>{addnotefield(individualnote)});
+}
 
 // Add new note on button click
 add.addEventListener('click', () => addnotefield());
