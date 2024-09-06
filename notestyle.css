@@ -62,7 +62,7 @@ main{
 
 .notecontaineer{
     background-color: #f9f9f9;
-    height: 300px;
+    height: 320px;
     width: 350px;
     margin-top: 2rem;
     margin-left: 2rem;
@@ -71,8 +71,10 @@ main{
 /* Style the operation buttons */
 .operation {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-bottom: 10px;
+    padding: 0.8rem;
+    box-sizing: border-box;
 }
 .operation button {
    
@@ -90,8 +92,9 @@ main{
 .operation .edit:hover{
     background-color: #f0f0f0;
 }
-.remove{
-    display: none;
+.operation span{
+    color: #FFC107;
+    font-size: 1.2rem;
 }
 
 .operation .delete{
@@ -123,7 +126,9 @@ main{
 .savednote{
     font-size: 1.8rem;
     padding: 2.4rem;
-    /* display: block; */
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-break: break-all;
 }
 @media(max-width:560px){
     main{

@@ -17,8 +17,9 @@ const addnotefield = (text = "") => {//default hat is for add button
 
     const htmlData = `
         <div class="operation">
-            <button class="edit"><i class="far fa-edit"></i></button>
-            <button class="delete"><i class="fas fa-trash"></i></button>
+            <span>Keep it</span>
+            <div class="btns"><button class="edit"><i class="far fa-edit"></i></button>
+            <button class="delete"><i class="fas fa-trash"></i></button></div>
         </div>
         <div class="savednote ${text ? "" : "hidden"}">${text ? text : ""}</div>
         <textarea name="" class="textbox ${text ? "hidden" : ""}">${text ? text : ""}</textarea>
