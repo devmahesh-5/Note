@@ -1,0 +1,133 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    opacity: 0.99;
+}
+
+
+body {
+    background-color: #f4f4f9;
+}
+header {
+    /* font-size: 1.6rem; */
+    z-index: 4;
+    height: 9.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0.01rem;
+    padding: 0 3.2rem;
+    background-color: #FFC107 ;
+    /* background-color: whitesmoke; */
+    opacity: 0.9;
+    box-shadow: 0 0.2rem rgb(184, 184, 184) 0.6;
+}
+
+.add{
+        width: 12.2rem;
+        margin-top: 0.8rem;
+        margin-right: 2rem;
+        padding: 1.1rem 3.2rem 1.1rem 0.2rem;
+        border: none;
+        /* border: 1px solid rgba(51, 0, 255, 0.783); */
+        transition: all 0.5s ease-in-out;
+        border-radius: 14px;
+        background-color: #f4f4f9;
+        display: flex;
+        overflow: hidden;
+        float: right;
+}
+#arrow{
+    background-color: #FFC107;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.add:hover{
+    padding: 1.1rem 0.2rem 1.1rem 3.2rem;
+    /* background-color: #FFC107; */
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 5.4rem;
+}
+
+.notecontaineer{
+    background-color: #f9f9f9;
+    height: 300px;
+    width: 350px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+} 
+/* Style the operation buttons */
+.operation {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.operation button {
+   
+    border: none;
+    padding: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.operation .edit {
+    background-color: #14cf5f;
+}
+.operation .edit:hover{
+    background-color: #f0f0f0;
+}
+.remove{
+    display: none;
+}
+
+.operation .delete{
+    background-color: #fb0505;
+}
+.operation .delete:hover{
+    background-color: #f0f0f0;
+}
+/* Make the textarea fill the remaining space */
+.textbox {
+    flex-grow: 1; /* Allow the textarea to grow and fill available space */
+    width: 100%; /* Full width */
+    resize: none; /* Disable resizing */
+    padding: 2.4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Include padding in width/height */
+    height: 258px;
+    overflow-y: scroll;
+}
+
+.hidden{
+    font-size: 1.8rem;
+    padding: 2.4rem;
+    display: none;
+}
+.savednote{
+    font-size: 1.8rem;
+    padding: 2.4rem;
+    /* display: block; */
+}
+@media(max-width:560px){
+    main{
+        grid-template-columns: 1fr;
+        
+    }
+}
